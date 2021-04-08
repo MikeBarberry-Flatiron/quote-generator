@@ -20,7 +20,7 @@ class UI {
         addButton.setAttribute('id', restaurant.id)
         addButton.setAttribute('class', 'addButton')
         addButton.addEventListener("click", function() {
-            fetch('http://localhost:3000/', {
+            fetch('http://localhost:3000/add', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,7 +47,7 @@ class UI {
             button.setAttribute('type', 'button')
             button.innerText = "Delete"
             button.addEventListener("click", function() {
-            fetch('http://localhost:3000/', {
+            fetch('http://localhost:3000/delete', {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
