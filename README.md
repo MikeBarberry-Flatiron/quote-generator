@@ -1,5 +1,5 @@
 # MenuGenerator
-Rails API with Vanilla JS frontend 
+Rails API with Vanilla JS frontend <br>
 ![alt text](https://i.imgur.com/JWkzPen.png)
 
 # Running Locally 
