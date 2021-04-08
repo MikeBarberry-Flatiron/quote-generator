@@ -1,5 +1,6 @@
 # MenuGenerator
 Rails API with Vanilla JS frontend 
+![alt text](https://i.imgur.com/JWkzPen.png)
 
 # Running Locally 
 Make sure you have ruby, rails, bundler and postgres installed <br>
