@@ -21,15 +21,16 @@ class UI {
         addButton.setAttribute('class', 'addButton')
         addButton.addEventListener("click", function() {
             fetch('http://localhost:3000/add', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                id: restaurant.id 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: restaurant.id 
+                })
             })
-            })
-            window.location.reload(1)
+            .then(resp => resp.json())
+            .then(confirmation => UI.showAddSuccess(confirmation))
         })
 
         let name = document.createElement('h2')
@@ -57,8 +58,7 @@ class UI {
                 })
             })
             .then(resp => resp.json())
-            .then(json => console.log(json))
-            window.location.reload(1)
+            .then(confirmation => UI.showDeleteSuccess(confirmation))
             })
             dish.append(button)
             ul.append(dish)
@@ -68,6 +68,24 @@ class UI {
         post.setAttribute('class', 'post')
         post.append(addButton, name, ul)
         container.append(post)
+    }
+
+    static showDeleteSuccess(confirmation) {
+        let showMessage = document.getElementById('delete-success')
+        showMessage.innerText = confirmation.message
+        setTimeout(function() {
+            window.location.reload(1)
+        }, 1500
+        )
+    }
+
+    static showAddSuccess(confirmation) {
+        let showMessage = document.getElementById('add-success')
+        showMessage.innerText = confirmation.message
+        setTimeout(function() {
+            window.location.reload(1)
+        }, 800
+        )
     }
 }
 

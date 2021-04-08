@@ -21,6 +21,16 @@ body {
     margin-bottom: 3rem;
 }
 
+#delete-success {
+    color: lightcoral;
+    font-weight: bolder;
+}
+
+#add-success {
+    color: mediumseagreen;
+    font-weight: bolder;
+}
+
 button:hover {
     cursor: pointer;
 }
