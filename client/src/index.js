@@ -12,9 +12,9 @@ class API {
 
 class UI {
     static generateUI(restaurant) {
-        let container = document.getElementById('container')
+        const container = document.getElementById('container')
 
-        let addButton = document.createElement('button')
+        const addButton = document.createElement('button')
         addButton.setAttribute('type', 'button')
         addButton.innerText = "Add"
         addButton.setAttribute('id', restaurant.id)
@@ -33,16 +33,16 @@ class UI {
             .then(confirmation => UI.showAddSuccess(confirmation))
         })
 
-        let name = document.createElement('h2')
+        const name = document.createElement('h2')
         name.innerText = restaurant.name
 
-        let ul = document.createElement('ul')
+        const ul = document.createElement('ul')
         ul.setAttribute('class', 'dishList')
 
         restaurant.foods.forEach(food => {
-            let dish = document.createElement('li')
+            const dish = document.createElement('li')
             dish.innerText = food.dish 
-            let button = document.createElement('button')
+            const button = document.createElement('button')
             button.setAttribute('id', food.id)
             button.setAttribute('class', 'deleteButton')
             button.setAttribute('type', 'button')
@@ -64,14 +64,14 @@ class UI {
             ul.append(dish)
         })
 
-        let post = document.createElement('div')
+        const post = document.createElement('div')
         post.setAttribute('class', 'post')
         post.append(addButton, name, ul)
         container.append(post)
     }
 
     static showDeleteSuccess(confirmation) {
-        let showMessage = document.getElementById('delete-success')
+        const showMessage = document.getElementById('delete-success')
         showMessage.innerText = confirmation.message
         setTimeout(function() {
             window.location.reload(1)
@@ -80,7 +80,7 @@ class UI {
     }
 
     static showAddSuccess(confirmation) {
-        let showMessage = document.getElementById('add-success')
+        const showMessage = document.getElementById('add-success')
         showMessage.innerText = confirmation.message
         setTimeout(function() {
             window.location.reload(1)
@@ -89,4 +89,19 @@ class UI {
     }
 }
 
-api = new API 
+api = new API
+
+let lightMode = true  
+const toggleButton = document.getElementById('toogle-dark-mode')
+toggleButton.addEventListener("click", function() {
+    const background = document.getElementById('body')
+    const posts = document.querySelectorAll('.post')
+    background.classList.toggle('darkMode');
+    if (lightMode) {
+        posts.forEach(post => post.style.boxShadow = "3px 4px 3px 4px white");
+        lightMode = false
+    } else {
+        posts.forEach(post => post.style.boxShadow = "3px 4px 3px 4px black");
+        lightMode = true 
+    }
+})

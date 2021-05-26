@@ -12,6 +12,25 @@ body {
     color: darkslateblue;
 }
 
+#toogle-dark-mode {
+    float: right;
+}
+
+.darkMode {
+    background-color: black;
+    color: white; 
+}
+
+.darkModePost {
+    display: inline-block;
+    margin-left: 1rem;
+    border: 2rem;
+    border-color: white;
+    box-shadow: 3px 4px 3px 4px white;
+    padding: 2rem;
+}
+
+
 #background_image {
     display: block;
     max-width:100%;
