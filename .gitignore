@@ -17,3 +17,5 @@ server/storage/.keep
 server/.byebug_history
 server/config/master.key
 server/.DS_Store
+
+client/.vscode

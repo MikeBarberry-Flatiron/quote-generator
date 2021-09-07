@@ -89,7 +89,7 @@ class UI {
     }
 }
 
-api = new API
+new API
 
 let lightMode = true  
 const toggleButton = document.getElementById('toogle-dark-mode')
