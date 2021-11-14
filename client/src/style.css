@@ -66,10 +66,20 @@ button:hover {
 }
 
 .post {
-    display: inline-block;
+    display: inline-grid;
     margin-left: 1rem;
     border: 2rem;
     border-color: black;
     box-shadow: 3px 4px 3px 4px black;
     padding: 2rem;
+    max-width: 25rem;
+}
+
+li[button] {
+    position: relative;
+    float: right;
+}
+
+#toogle-dark-mode {
+    border-radius: 10px;
 }

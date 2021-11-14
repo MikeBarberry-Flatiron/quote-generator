@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
             h = {}
             h[:id] = rest.id 
             h[:name] = rest.name
-            h[:foods] = rest.foods
+            h[:foods] = rest.foods.order("id DESC")
             data << h 
         end 
         render json: data, except: [:created_at, :updated_at]
