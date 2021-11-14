@@ -1,11 +1,9 @@
-# MenuGenerator
-Rails API with Vanilla JS frontend
+Screenshot of app
 
-![alt text](https://i.imgur.com/JWkzPen.png)
+<br />
 
-# Run Locally 
-`git clone` <br>
-`cd server` and `bundle install` <br>
-`rails db:create`, `rails db:migrate`, and `rails db:seed`<br>
-`rails s -p 3000` <br>
-`cd client` & open index.html with server such as LiveServer http-server or similar (for live server it is necessary to initiate the server after opening a terminal window with the client directory at the root).
+![alt text](https://imgur.com/a/k42Xiu5)
+
+<br />
+
+`cd server, bundle install rails db:create rails db:migrate rails db:seed rails s -p 3000` 
