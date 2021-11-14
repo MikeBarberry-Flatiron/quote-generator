@@ -2,8 +2,8 @@ class API {
     constructor() {
         fetch('http://localhost:3000/')
         .then(res => res.json())
-        .then(show => {
-            show.map(show => {
+        .then(shows => {
+            shows.map(show => {
                 UI.generateUI(show)
             })
         })
