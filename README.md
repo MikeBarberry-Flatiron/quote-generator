@@ -2,7 +2,7 @@ Screenshot of app
 
 <br />
 
-![alt text](https://imgur.com/a/k42Xiu5)
+![alt text](https://i.imgur.com/MZ9xagl.png)
 
 <br />
 
