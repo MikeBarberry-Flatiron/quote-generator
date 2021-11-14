@@ -6,4 +6,4 @@ Screenshot of app
 
 <br />
 
-`cd server, bundle install rails db:create rails db:migrate rails db:seed rails s -p 3000` 
+`cd server, bundle install, rails db:create, rails db:migrate, rails db:seed, rails s -p 3000; run frontend` 

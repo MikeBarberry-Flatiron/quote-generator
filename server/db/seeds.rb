@@ -8,9 +8,8 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Restaurant.create(name: "South Park")
-Restaurant.create(name: "Community")
-Restaurant.create(name: "Hey Arnold")
-Restaurant.create(name: "Game of Thrones")
+Show.create(name: "South Park")
+Show.create(name: "Community")
+Show.create(name: "Hey Arnold")
+Show.create(name: "Game of Thrones")
 
- 

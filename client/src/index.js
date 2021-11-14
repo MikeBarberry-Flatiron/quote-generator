@@ -2,22 +2,22 @@ class API {
     constructor() {
         fetch('http://localhost:3000/')
         .then(res => res.json())
-        .then(restaurants => {
-            restaurants.map(restaurant => {
-                UI.generateUI(restaurant)
+        .then(show => {
+            show.map(show => {
+                UI.generateUI(show)
             })
         })
     }
 }
 
 class UI {
-    static generateUI(restaurant) {
+    static generateUI(show) {
         const container = document.getElementById('container')
 
         const addButton = document.createElement('button')
         addButton.setAttribute('type', 'button')
         addButton.innerText = "Add"
-        addButton.setAttribute('id', restaurant.id)
+        addButton.setAttribute('id', show.id)
         addButton.setAttribute('class', 'addButton')
         addButton.addEventListener("click", function() {
             fetch('http://localhost:3000/add', {
@@ -26,7 +26,7 @@ class UI {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: restaurant.id 
+                    id: show.id 
                 })
             })
             .then(resp => resp.json())
@@ -34,16 +34,16 @@ class UI {
         })
 
         const name = document.createElement('h2')
-        name.innerText = restaurant.name
+        name.innerText = show.name
 
         const ul = document.createElement('ul')
         ul.setAttribute('class', 'dishList')
 
-        restaurant.foods.forEach(food => {
-            const dish = document.createElement('li')
-            dish.innerText = food.dish 
+        show.quotes.forEach(quote => {
+            const ele = document.createElement('li')
+            ele.innerText = quote.quote 
             const button = document.createElement('button')
-            button.setAttribute('id', food.id)
+            button.setAttribute('id', quote.id)
             button.setAttribute('class', 'deleteButton')
             button.setAttribute('type', 'button')
             button.innerText = "Delete"
@@ -54,14 +54,14 @@ class UI {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: food.id,
+                    id: quote.id,
                 })
             })
             .then(resp => resp.json())
             .then(confirmation => UI.showDeleteSuccess(confirmation))
             })
-            dish.append(button)
-            ul.append(dish)
+            ele.append(button)
+            ul.append(ele)
         })
 
         const post = document.createElement('div')
@@ -91,17 +91,23 @@ class UI {
 
 new API
 
-let lightMode = true  
+let mode = 'light'  
 const toggleButton = document.getElementById('toogle-dark-mode')
 toggleButton.addEventListener("click", function() {
     const background = document.getElementById('body')
     const posts = document.querySelectorAll('.post')
     background.classList.toggle('darkMode');
-    if (lightMode) {
+    if (mode === 'light') {
+        toggleButton.innerText = "light mode"
+        toggleButton.style.background = "white"
+        toggleButton.style.color = "black"
         posts.forEach(post => post.style.boxShadow = "3px 4px 3px 4px white");
-        lightMode = false
-    } else {
+        mode = 'dark'
+    } else if (mode === 'dark') {
+        toggleButton.innerText = "dark mode"
+        toggleButton.style.background = "black"
+        toggleButton.style.color = "white"
         posts.forEach(post => post.style.boxShadow = "3px 4px 3px 4px black");
-        lightMode = true 
+        mode = 'light' 
     }
 })

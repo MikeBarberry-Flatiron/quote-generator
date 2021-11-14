@@ -63,11 +63,12 @@ button:hover {
     background-color: lightcoral;
     margin-left: 1rem;
     border-radius: 5px;
+    float: right;
 }
 
 .post {
     display: inline-grid;
-    margin-left: 1rem;
+    margin: 1rem;
     border: 2rem;
     border-color: black;
     box-shadow: 3px 4px 3px 4px black;
@@ -82,4 +83,8 @@ li[button] {
 
 #toogle-dark-mode {
     border-radius: 10px;
+    background-color: black;
+    color: white;
+    position: relative;
+    right: 5rem;
 }
