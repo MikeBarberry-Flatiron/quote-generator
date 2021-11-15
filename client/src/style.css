@@ -3,8 +3,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h2 {
+    justify-self: center;
+}
+
 #image_wrapper {
-    max-width: 300px;
+    max-width: 500px;
     max-height: 100px;
 }
 
