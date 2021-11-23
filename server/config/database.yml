@@ -73,9 +73,11 @@ development:
 # the values provided in this file. Alternatively, you can specify a connection
 # URL environment variable explicitly:
 #
-#   production:
-#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
-#
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: quote_generator
+
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
