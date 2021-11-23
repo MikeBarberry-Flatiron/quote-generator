@@ -74,10 +74,12 @@ development:
 # URL environment variable explicitly:
 #
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: quote_generator
-
+  adapter: <%= URI.parse(ENV["DATABASE_URL"]).scheme %>
+  host:  <%= URI.parse(ENV["DATABASE_URL"]).host %>
+  username:  <%= URI.parse(ENV["DATABASE_URL"]).user %>
+  password:  <%= URI.parse(ENV["DATABASE_URL"]).password %>
+  database:  <%= URI.parse(ENV["DATABASE_URL"]).path[1..-1] %>
+  encoding:  "utf8"
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
