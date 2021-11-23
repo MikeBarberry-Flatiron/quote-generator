@@ -6,7 +6,7 @@ export default class Quote {
         button.setAttribute('class', 'deleteButton')
         button.innerText = "Delete"
         button.addEventListener("click", function() {
-        fetch('http://localhost:3000/delete', {
+        fetch("https://nameless-gorge-25083.herokuapp.com/delete", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

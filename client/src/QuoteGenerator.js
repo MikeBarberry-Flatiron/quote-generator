@@ -6,7 +6,7 @@ export default class QuoteGenerator {
     }
 
     getData() {
-        fetch('http://localhost:3000/')
+        fetch('https://nameless-gorge-25083.herokuapp.com/")
         .then(res => res.json())
         .then(shows => {
             shows.map(show => {
