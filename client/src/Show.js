@@ -8,7 +8,7 @@ export default class Show {
         addButton.innerText = "Add"
         addButton.setAttribute('class', 'addButton')
         addButton.addEventListener("click", function() {
-            fetch('https://nameless-gorge-25083.herokuapp.com/add", {
+            fetch("https://nameless-gorge-25083.herokuapp.com/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
