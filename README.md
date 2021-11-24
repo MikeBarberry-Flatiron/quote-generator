@@ -10,4 +10,4 @@ Screenshot of app
 
 <br />
 
-`cd server, bundle install, rails db:create, rails db:migrate, rails db:seed, rails s -p 3000; run frontend` 
+`cd server, bundle install, rails db:create, rails db:migrate, rails db:seed, rails s -p 3000; run frontend with Live Server or similar` 
