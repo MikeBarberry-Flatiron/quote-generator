@@ -6,9 +6,12 @@ export default class QuoteGenerator {
     }
 
     getData() {
+		const loading = document.getElementById("loading")
+		loading.toggleAttribute("hidden")
         fetch("https://nameless-gorge-25083.herokuapp.com/")
         .then(res => res.json())
         .then(shows => {
+			loading.toggleAttribute("hidden")
             shows.map(show => {
             new Show(show)
             })

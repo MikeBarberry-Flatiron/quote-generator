@@ -7,11 +7,6 @@ h2 {
     justify-self: center;
 }
 
-#image_wrapper {
-    max-width: 500px;
-    max-height: 100px;
-}
-
 #title {
     color: darkslateblue;
 }
@@ -23,6 +18,10 @@ h2 {
 .darkMode {
     background-color: black;
     color: white; 
+}
+
+.load-message {
+	display: none;
 }
 
 .darkModePost {
@@ -37,8 +36,8 @@ h2 {
 
 #background_image {
     display: block;
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
     height: auto;
     margin-bottom: 3rem;
@@ -92,3 +91,4 @@ li[button] {
     position: relative;
     right: 5rem;
 }
+
