@@ -1,8 +1,4 @@
-[Visit the website!](https://determined-bartik-aa0fab.netlify.app/)
-
-<br /> 
-
-Screenshot of app
+Screenshot of the app:
 
 <br />
 
