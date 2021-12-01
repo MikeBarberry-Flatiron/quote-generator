@@ -2,7 +2,7 @@ import Quote from './Quote.js'
 
 export default class Show {
     constructor(show) {
-        const container = document.getElementById('container')
+        const container = document.getElementById('post-container')
 
         const addButton = document.createElement('button')
         addButton.innerText = "Add"
