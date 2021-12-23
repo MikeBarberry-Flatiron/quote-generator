@@ -7,16 +7,9 @@ h2 {
     justify-self: center;
 }
 
-#title {
-    color: darkslateblue;
-}
-
-#toogle-dark-mode {
-    float: right;
-}
 
 .darkMode {
-    background-color: black;
+    background-color: rgb(48, 48, 48);
     color: white; 
 }
 
@@ -54,6 +47,7 @@ button:hover {
 .addButton {
     background-color: mediumseagreen;
     border-radius: 5px;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .deleteButton {
@@ -61,6 +55,7 @@ button:hover {
     margin-left: 1rem;
     border-radius: 5px;
     float: right;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .post {
@@ -71,6 +66,7 @@ button:hover {
     box-shadow: 3px 4px 3px 4px black;
     padding: 2rem;
     max-width: 25rem;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 li[button] {
@@ -80,7 +76,7 @@ li[button] {
 
 #toogle-dark-mode {
     border-radius: 10px;
-    background-color: black;
+    background-color: rgb(48, 48, 48);
     color: white;
     position: relative;
     right: 5rem;

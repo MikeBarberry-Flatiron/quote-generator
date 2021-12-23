@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <title>Quote Generator</title>
 </head>
 <body id="body">
     <div id="container">
-        <h1 id="title">TV Show Quotes</h1>
-        <button id="toogle-dark-mode">dark mode</button>
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <h1 id="title" style="color: darkslateblue; font-family: 'Space Mono', monospace;">TV Show Quotes</h1>
+            <button id="toogle-dark-mode" style="margin-bottom: 30px; left: 15px"><i id="moon" class="fa fa-moon-o"></i></button>
+        </div>
 
         <div id="image-wrapper">
             <img id ="background_image" src='/assets/movie.jpeg' alt="restaurant_image">
