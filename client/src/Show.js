@@ -18,7 +18,7 @@ export default class Show {
                 })
             })
             .then(resp => resp.json())
-            .then(confirmation => Quote.showAddSuccess(confirmation))
+            .then(confirmation => Quote.showAddSuccess(confirmation.message))
         })
 
         const name = document.createElement('h2')
@@ -26,9 +26,11 @@ export default class Show {
 
         const ul = document.createElement('ul')
         ul.setAttribute('class', 'quoteList')
+        ul.setAttribute('id', `quote-list-${show.id}`)
 
         const post = document.createElement('div')
         post.setAttribute('class', 'post')
+        post.setAttribute('id', show.id)
         post.append(addButton, name, ul)
         container.append(post)
 
