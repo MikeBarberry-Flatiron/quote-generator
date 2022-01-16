@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             const posts = document.querySelectorAll('.post')
             posts.forEach(post => post.style.boxShadow = `3px 4px 3px 4px white`);
-        }, 100)
+        }, 300)
     }
 })
 
