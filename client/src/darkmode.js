@@ -1,5 +1,7 @@
+//default to light mode
 let selected_mode = 'light'  
 
+//define function to handle changing between modes
 const toggleMode = (tag, props, background, color, mode) => {
 
     const body = document.getElementById('body')
@@ -21,6 +23,7 @@ const toggleMode = (tag, props, background, color, mode) => {
     localStorage.setItem('mode', mode)
 }
 
+//restore theme after page reload
 window.addEventListener('load', () => {
     const mode = localStorage.getItem('mode')
     if (mode === 'dark') {
@@ -32,10 +35,10 @@ window.addEventListener('load', () => {
     }
 })
 
+//add event listener to invoke function and change theme
 const toggleButton = document.getElementById('toogle-dark-mode')
-
 toggleButton.addEventListener("click", function() {
-
-    (selected_mode === 'light') ? toggleMode('sun', 'fa fa-sun-o', 'white', 'rgb(48, 48, 48)', 'dark') : toggleMode('moon', 'fa fa-moon-o', 'rgb(48, 48, 48)', 'white', 'light')  
-
+    (selected_mode === 'light') 
+        ? toggleMode('sun', 'fa fa-sun-o', 'white', 'rgb(48, 48, 48)', 'dark') 
+        : toggleMode('moon', 'fa fa-moon-o', 'rgb(48, 48, 48)', 'white', 'light')  
 })

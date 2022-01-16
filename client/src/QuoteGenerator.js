@@ -6,15 +6,20 @@ export default class QuoteGenerator {
     }
 
     getData() {
-		const loading = document.getElementById("loading")
-		loading.toggleAttribute("hidden")
+        //show loading icon while fetching data
+        const loading = document.getElementById("loading");
+        loading.toggleAttribute("hidden");
+
         fetch("https://nameless-gorge-25083.herokuapp.com/")
         .then(res => res.json())
         .then(shows => {
-			loading.toggleAttribute("hidden")
+            //hide loading icon after receiving data
+            loading.toggleAttribute("hidden")
+
+            //build DOM for each show
             shows.map(show => {
-            new Show(show)
+                new Show(show)
             })
-        })
-    }
+        });
+    };
 }

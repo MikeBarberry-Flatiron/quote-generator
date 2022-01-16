@@ -1,11 +1,12 @@
 export default class Quote {
     constructor(quote, ul) {
-        const ele = document.createElement('li')
-        ele.setAttribute('id', quote.id)
-        ele.innerText = quote.quote 
-        const button = document.createElement('button')
-        button.setAttribute('class', 'deleteButton')
-        button.innerText = "Delete"
+        const ele = document.createElement('li');
+        ele.setAttribute('id', quote.id);
+        ele.innerText = quote.quote;
+
+        const button = document.createElement('button');
+        button.setAttribute('class', 'deleteButton');
+        button.innerText = "Delete";
         button.addEventListener("click", function() {
         fetch("https://nameless-gorge-25083.herokuapp.com/delete", {
             method: "DELETE",
@@ -18,38 +19,47 @@ export default class Quote {
         })
         .then(resp => resp.json())
         .then(confirmation => Quote.showDeleteSuccess(confirmation.message))
-        })
-        ele.append(button)
-        ul.append(ele)
+        });
+
+        //append quote text and delete button on to ul received from Show class
+        ele.append(button);
+        ul.append(ele);
     }
 
     static showDeleteSuccess(confirmation) {
-        const showMessage = document.getElementById('delete-success')
-        showMessage.innerText = confirmation.note
+        //flash success message
+        const showMessage = document.getElementById('delete-success');
+        showMessage.innerText = confirmation.note;
         setTimeout(() => {
             showMessage.innerText = ""
-        }, 1500)
+        }, 1500);
 
-        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`)
-        const quote = document.getElementById(confirmation.quote.id)
-        showQuotes.removeChild(quote)
+        //remove quote from DOM without reloading page
+        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`);
+
+        const quote = document.getElementById(confirmation.quote.id);
+
+        showQuotes.removeChild(quote);
     }
 
     static showAddSuccess(confirmation) {
-        const showMessage = document.getElementById('add-success')
-        showMessage.innerText = confirmation.note
+        //flash success message
+        const showMessage = document.getElementById('add-success');
+        showMessage.innerText = confirmation.note;
         setTimeout(() => {
            showMessage.innerText = ""
-        }, 1500)
+        }, 1500);
 
-        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`)
+        //build new quote and add to DOM without page reload
+        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`);
 
-        const ele = document.createElement('li')
-        ele.setAttribute('id', confirmation.quote.id)
-        ele.innerText = confirmation.quote.quote 
-        const button = document.createElement('button')
-        button.setAttribute('class', 'deleteButton')
-        button.innerText = "Delete"
+        const ele = document.createElement('li');
+        ele.setAttribute('id', confirmation.quote.id);
+        ele.innerText = confirmation.quote.quote;
+
+        const button = document.createElement('button');
+        button.setAttribute('class', 'deleteButton');
+        button.innerText = "Delete";
         button.addEventListener("click", function() {
         fetch("https://nameless-gorge-25083.herokuapp.com/delete", {
             method: "DELETE",
@@ -62,8 +72,9 @@ export default class Quote {
         })
         .then(resp => resp.json())
         .then(confirmation => Quote.showDeleteSuccess(confirmation.message))
-        })
-        ele.append(button)
-        showQuotes.prepend(ele)
+        });
+
+        ele.append(button);
+        showQuotes.prepend(ele);
     }
 }
