@@ -1,44 +1,49 @@
 //default to light mode
-let selected_mode = 'light'  
+let selected_mode = 'light';  
 
 //define function to handle changing between modes
 const toggleMode = (tag, props, background, color, mode) => {
 
-    const body = document.getElementById('body')
+    //body level changes defined in style.css
+    const body = document.getElementById('body');
     body.classList.toggle('darkMode');
 
-    const posts = document.querySelectorAll('.post')
 
-    const oldIcon = document.getElementById((tag === 'sun') ? 'moon' : 'sun')
-    const newIcon = document.createElement('i')
-    newIcon.id = tag
-    newIcon.className = props
+    //swap out icon when mode is changed
+    const oldIcon = document.getElementById((tag === 'sun') ? 'moon' : 'sun');
+    const newIcon = document.createElement('i');
+    newIcon.id = tag;
+    newIcon.className = props;
 
-    toggleButton.replaceChild(newIcon, oldIcon)
-    
-    toggleButton.style.background = background
-    toggleButton.style.color = color
+    toggleButton.replaceChild(newIcon, oldIcon);
+    toggleButton.style.background = background;
+    toggleButton.style.color = color;
+
+    //apply theme change to posts
+    const posts = document.querySelectorAll('.post');
     posts.forEach(post => post.style.boxShadow = `3px 4px 3px 4px ${background}`);
-    selected_mode = mode
-    localStorage.setItem('mode', mode)
-}
+
+    //update selected mode and store preference in local storage
+    selected_mode = mode;
+    localStorage.setItem('mode', mode);
+};
 
 //restore theme after page reload
 window.addEventListener('load', () => {
-    const mode = localStorage.getItem('mode')
+    const mode = localStorage.getItem('mode');
     if (mode === 'dark') {
         toggleMode('sun', 'fa fa-sun-o', 'white', 'rgb(48, 48, 48)', 'dark')
         setTimeout(() => {
             const posts = document.querySelectorAll('.post')
             posts.forEach(post => post.style.boxShadow = `3px 4px 3px 4px white`);
-        }, 300)
+        }, 300) //needs to be around 300 to allow time for posts to load 
     }
-})
+});
 
 //add event listener to invoke function and change theme
-const toggleButton = document.getElementById('toogle-dark-mode')
+const toggleButton = document.getElementById('toogle-dark-mode');
 toggleButton.addEventListener("click", function() {
     (selected_mode === 'light') 
         ? toggleMode('sun', 'fa fa-sun-o', 'white', 'rgb(48, 48, 48)', 'dark') 
         : toggleMode('moon', 'fa fa-moon-o', 'rgb(48, 48, 48)', 'white', 'light')  
-})
+});
