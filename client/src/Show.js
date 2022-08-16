@@ -1,7 +1,7 @@
 import Quote from './Quote.js'
 
 export default class Show {
-    constructor(show) {
+    createShow(self, show) {
         const container = document.getElementById('post-container');
 
         const addButton = document.createElement('button');
@@ -18,7 +18,7 @@ export default class Show {
                 })
             })
             .then(resp => resp.json())
-            .then(confirmation => Quote.showAddSuccess(confirmation.message))
+            .then(confirmation => self.showAddSuccess(confirmation.message))
         });
 
         const name = document.createElement('h2');
@@ -35,9 +35,29 @@ export default class Show {
         post.append(addButton, name, ul);
         container.append(post);
 
-        //pass ul to each quote (it will append itself there) and build new quote for each
-        show.quotes.forEach(quote => {
-            new Quote(quote, ul)
-        });
+        return ul
+    }
+
+    //pass ul to each quote (it will append itself there) and build new quote for each
+    buildQuotes(quotes, ul) {
+        quotes.forEach(quote => {
+            const q = new Quote
+            q.createQuote(q, quote, ul)
+        })
+    }
+
+    showAddSuccess(confirmation) {
+        //flash success message
+        const showMessage = document.getElementById('add-success');
+        showMessage.innerText = confirmation.note;
+        setTimeout(() => {
+           showMessage.innerText = ""
+        }, 1500);
+
+        //build new quote and add to DOM without page reload
+        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`);
+
+        const q = new Quote()
+        q.createQuote(q, confirmation.quote, showQuotes)
     }
 }

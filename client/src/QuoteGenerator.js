@@ -2,10 +2,6 @@ import Show from './Show.js'
 
 export default class QuoteGenerator {
     constructor() {
-        this.getData()
-    }
-
-    getData() {
         //show loading icon while fetching data
         const loading = document.getElementById("loading");
         loading.toggleAttribute("hidden");
@@ -18,8 +14,10 @@ export default class QuoteGenerator {
 
             //build DOM for each show
             shows.map(show => {
-                new Show(show)
+                const s = new Show()
+                const id = s.createShow(s, show)
+                s.buildQuotes(show.quotes, id)
             })
         });
-    };
+    }
 }
