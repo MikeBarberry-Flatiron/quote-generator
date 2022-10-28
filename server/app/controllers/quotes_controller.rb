@@ -2,7 +2,7 @@ class QuotesController < ApplicationController
     def delete 
         quote = Quote.find(params[:id])
         quote.delete
-        render json: {:status => 200, :message => "Quote Successfully Deleted!"}
+        render json: {:status => 200, :message => {:note => "Quote Successfully Deleted!", :quote => quote}}
     end 
 
     def create 
@@ -17,7 +17,7 @@ class QuotesController < ApplicationController
         when 4 
             quote = Faker::TvShows::GameOfThrones.quotes
         end 
-        Quote.create(quote: quote, show_id: show.id)
-        render json: {:status => 200, :message => "Quote Successfully Created!"}
+        created = Quote.create(quote: quote, show_id: show.id)
+        render json: {:status => 200, :message => {:note => "Quote Successfully Created!", :quote => created}}
     end 
 end

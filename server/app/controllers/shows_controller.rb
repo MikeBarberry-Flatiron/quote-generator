@@ -11,5 +11,5 @@ class ShowsController < ApplicationController
         end
 
         render json: response, except: [:created_at, :updated_at]
-    end 
+    end
 end

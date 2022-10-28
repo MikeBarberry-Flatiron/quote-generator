@@ -3,22 +3,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#image_wrapper {
-    max-width: 300px;
-    max-height: 100px;
+h2 {
+    justify-self: center;
 }
 
-#title {
-    color: darkslateblue;
-}
-
-#toogle-dark-mode {
-    float: right;
-}
 
 .darkMode {
-    background-color: black;
+    background-color: rgb(48, 48, 48);
     color: white; 
+}
+
+.load-message {
+	display: none;
 }
 
 .darkModePost {
@@ -30,14 +26,8 @@ body {
     padding: 2rem;
 }
 
-
-#background_image {
-    display: block;
-    max-width:100%;
-    max-height:100%;
-    width: auto;
-    height: auto;
-    margin-bottom: 3rem;
+#image-wrapper {
+    text-align: center;
 }
 
 #delete-success {
@@ -57,6 +47,7 @@ button:hover {
 .addButton {
     background-color: mediumseagreen;
     border-radius: 5px;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .deleteButton {
@@ -64,6 +55,7 @@ button:hover {
     margin-left: 1rem;
     border-radius: 5px;
     float: right;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .post {
@@ -74,6 +66,7 @@ button:hover {
     box-shadow: 3px 4px 3px 4px black;
     padding: 2rem;
     max-width: 25rem;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 li[button] {
@@ -83,8 +76,46 @@ li[button] {
 
 #toogle-dark-mode {
     border-radius: 10px;
-    background-color: black;
+    background-color: rgb(48, 48, 48);
     color: white;
     position: relative;
     right: 5rem;
+}
+
+#post-container {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+@keyframes blink {
+    0% {
+      opacity: .2;
+    }
+    
+    20% {
+      opacity: 1;
+    }
+   
+    100% {
+      opacity: .2;
+    }
+}
+
+#loading span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+#loading span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+#loading span:nth-child(3) {
+    animation-delay: .4s;
 }
