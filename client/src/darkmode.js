@@ -2,7 +2,7 @@
 let selected_mode = 'light';  
 
 //define function to handle changing between modes
-const toggleMode = (tag, props, background, color, mode) => {
+const toggleMode = (currentMode, icon, background, iconColor, nextMode) => {
 
     //body level changes defined in style.css
     const body = document.getElementById('body');
@@ -10,22 +10,22 @@ const toggleMode = (tag, props, background, color, mode) => {
 
 
     //swap out icon when mode is changed
-    const oldIcon = document.getElementById((tag === 'sun') ? 'moon' : 'sun');
+    const oldIcon = document.getElementById((currentMode === 'sun') ? 'moon' : 'sun');
     const newIcon = document.createElement('i');
-    newIcon.id = tag;
-    newIcon.className = props;
+    newIcon.id = currentMode;
+    newIcon.className = icon;
 
     toggleButton.replaceChild(newIcon, oldIcon);
     toggleButton.style.background = background;
-    toggleButton.style.color = color;
+    toggleButton.style.color = iconColor;
 
     //apply theme change to posts
     const posts = document.querySelectorAll('.post');
     posts.forEach(post => post.style.boxShadow = `3px 4px 3px 4px ${background}`);
 
     //update selected mode and store preference in local storage
-    selected_mode = mode;
-    localStorage.setItem('mode', mode);
+    selected_mode = nextMode;
+    localStorage.setItem('mode', nextMode);
 };
 
 //restore theme after page reload

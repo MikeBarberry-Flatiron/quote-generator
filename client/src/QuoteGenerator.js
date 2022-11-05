@@ -14,9 +14,8 @@ export default class QuoteGenerator {
 
             //build DOM for each show
             shows.map(show => {
-                const s = new Show()
-                const id = s.createShow(s, show)
-                s.buildQuotes(show.quotes, id)
+                const s = new Show(show)
+                s.buildQuotes(show.quotes)
             })
         });
     }
