@@ -17,15 +17,18 @@ export default class Show {
     addButton.innerText = "Add";
     addButton.setAttribute("class", "addButton");
     addButton.addEventListener("click", function () {
-      fetch("https://nameless-gorge-25083.herokuapp.com/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: show.id,
-        }),
-      })
+      fetch(
+        "https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: show.id,
+          }),
+        }
+      )
         .then((resp) => resp.json())
         .then((confirmation) => {
           boundShowAddSuccess(confirmation.message);
