@@ -14,15 +14,18 @@ export default class Quote {
     button.setAttribute("class", "deleteButton");
     button.innerText = "Delete";
     button.addEventListener("click", function () {
-      fetch("https://nameless-gorge-25083.herokuapp.com/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: quote.id,
-        }),
-      })
+      fetch(
+        "https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/delete",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: quote.id,
+          }),
+        }
+      )
         .then((resp) => resp.json())
         .then((confirmation) => boundShowDeleteSuccess(confirmation.message));
     });

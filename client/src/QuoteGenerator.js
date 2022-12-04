@@ -6,7 +6,7 @@ export default class QuoteGenerator {
     const loading = document.getElementById("loading");
     loading.toggleAttribute("hidden");
 
-    fetch("https://nameless-gorge-25083.herokuapp.com/")
+    fetch("https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/")
       .then((res) => res.json())
       .then((shows) => {
         //hide loading icon after receiving data
