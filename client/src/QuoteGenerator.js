@@ -1,4 +1,5 @@
 import Show from "./Show.js";
+import { apiURL } from "../lib/utils.js";
 
 export default class QuoteGenerator {
   constructor() {
@@ -6,7 +7,7 @@ export default class QuoteGenerator {
     const loading = document.getElementById("loading");
     loading.toggleAttribute("hidden");
 
-    fetch("https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/")
+    fetch(`${apiURL}/`)
       .then((res) => res.json())
       .then((shows) => {
         //hide loading icon after receiving data
@@ -14,8 +15,8 @@ export default class QuoteGenerator {
 
         //build DOM for each show
         shows.map((show) => {
-          const _show = new Show(show);
-          _show.buildQuotes(show.quotes);
+          const newShow = new Show(show);
+          newShow.buildQuotes(show.quotes);
         });
       });
   }

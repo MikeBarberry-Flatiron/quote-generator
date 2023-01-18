@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb';
 
 const client = new MongoClient(process.env.MONGO_URI);
 
-export const handler = async (event) => {
+export const handler = async () => {
   const db = client.db('quotegen');
   const collection = db.collection('shows');
 
@@ -20,10 +20,10 @@ export const handler = async (event) => {
       ])
       .toArray();
 
-    const cleansedData = showQuotes
+    const stringifiedData = showQuotes
       .map((show) => {
         const { _id, name, quotes } = show;
-        const cleansedQuotes = quotes.map((quote) => {
+        const stringifiedQuotes = quotes.map((quote) => {
           return {
             id: quote._id.toString(),
             quote: quote.quote,
@@ -33,14 +33,14 @@ export const handler = async (event) => {
         return {
           id: _id.toString(),
           name,
-          quotes: cleansedQuotes,
+          quotes: stringifiedQuotes,
         };
       })
       .sort((a, b) => a.name - b.name);
 
     const response = {
       statusCode: 200,
-      body: JSON.stringify(cleansedData),
+      body: JSON.stringify(stringifiedData),
       headers: {
         'Access-Control-Allow-Origin': '*',
       },

@@ -1,8 +1,9 @@
 import Quote from "./Quote.js";
+import { apiURL } from "../lib/utils.js";
 
 export default class Show {
   constructor(show) {
-    this.ul = this.createShow(show);
+    this.quoteList = this.createShow(show);
   }
 
   createShow(show) {
@@ -17,18 +18,15 @@ export default class Show {
     addButton.innerText = "Add";
     addButton.setAttribute("class", "addButton");
     addButton.addEventListener("click", function () {
-      fetch(
-        "https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/add",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: show.id,
-          }),
-        }
-      )
+      fetch(`${apiURL}/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: show.id,
+        }),
+      })
         .then((resp) => resp.json())
         .then((confirmation) => {
           boundShowAddSuccess(confirmation.message);
@@ -52,8 +50,8 @@ export default class Show {
   //pass ul to each quote (it will append itself there) and build new quote for each
   buildQuotes(quotes) {
     quotes.forEach((quote) => {
-      const _quote = new Quote(this);
-      _quote.createQuote(quote, this.ul);
+      const newQuote = new Quote(this);
+      newQuote.createQuote(quote, this.quoteList);
     });
   }
 
@@ -69,8 +67,8 @@ export default class Show {
     const showQuotes = document.getElementById(
       `quote-list-${confirmation.quote.show_id}`
     );
-    const _quote = new Quote(this);
-    _quote.createQuote(confirmation.quote, showQuotes);
+    const newQuote = new Quote(this);
+    newQuote.createQuote(confirmation.quote, showQuotes);
   }
 
   showDeleteSuccess(confirmation) {

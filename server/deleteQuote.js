@@ -11,7 +11,7 @@ export const handler = async (event) => {
   try {
     const quote = await collection.findOne({ _id: ObjectId(id) });
 
-    const cleansedQuote = {
+    const stringifiedQuote = {
       id: quote._id.toString(),
       quote: quote.quote,
       show_id: quote.show_id.toString(),
@@ -24,7 +24,7 @@ export const handler = async (event) => {
       body: JSON.stringify({
         message: {
           note: 'Quote Successfully Deleted!',
-          quote: cleansedQuote,
+          quote: stringifiedQuote,
         },
       }),
       headers: {
