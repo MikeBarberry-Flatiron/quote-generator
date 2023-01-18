@@ -1,4 +1,4 @@
-import QuoteGenerator from "./QuoteGenerator.js"
-import './darkmode.js'
+import QuoteGenerator from "./QuoteGenerator.js";
+import "./darkmode.js";
 
-const q = new QuoteGenerator()
+const quoteGenerator = new QuoteGenerator();

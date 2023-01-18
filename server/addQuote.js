@@ -5,8 +5,8 @@ const client = new MongoClient(process.env.MONGO_URI);
 export const handler = async (event) => {
   function getQuoteFromShow(show) {
     const quotesBank = {
-      //Community
       '638c21169be83ed30898c5ba': [
+        // Community
         'Harrison Ford is irradiating our testicles with microwave satellite transmissions!',
         'Doing more than the minimum amount of work is my definition of failing.',
         'The next person that offers me charity or pity will be mentioned, by name, in my suicide note.',
@@ -35,8 +35,8 @@ export const handler = async (event) => {
         'Some flies are too awesome for the wall.',
         'We’ll definitely be back next year. If not, it’ll be because an asteroid has destroyed all human civilization. And that’s canon.',
       ],
-      //Game of Thrones
       '638c21459be83ed30898c5bb': [
+        // Game of Thrones
         'There are no heroes...in life, the monsters win.',
         'Once you’ve accepted your flaws, no one can use them against you.',
         "And so he spoke, and so he spoke, that Lord of Castamere, but now the rains weep o'er his hall, with no one there to hear. Yes, now the rains weep o'er his hall, and not a soul to hear.",
@@ -64,8 +64,8 @@ export const handler = async (event) => {
         'The things I do for love.',
         'Summer will end soon enough, and childhood as well.',
       ],
-      //Hey Arnold
       '638c215e9be83ed30898c5bc': [
+        // Hey Arnold
         "Stoop Kid's afraid to leave his stoop!",
         'MONKEYMAAAAN!',
         "You better not touch my gal, or I'll pop you in the kisser, pal",
@@ -83,8 +83,8 @@ export const handler = async (event) => {
         'Never eat raspberries.',
         "I'm okay!",
       ],
-      //South Park
       '638c21769be83ed30898c5bd': [
+        // South Park
         "Hippies. They're everywhere. They wanna save Earth, but all they do is smoke pot and smell bad",
         'They took our deers',
         'Kenny’s family is so poor that yesterday, they had to put their cardboard box up for a second mortgage',
@@ -106,7 +106,7 @@ export const handler = async (event) => {
     };
     const showQuotes = quotesBank[show];
     function getQuote(showQuotes) {
-      const index = Math.floor(Math.random() * showQuotes.length + 1);
+      const index = Math.floor(Math.random() * showQuotes.length);
       return showQuotes[index];
     }
     return getQuote(showQuotes);

@@ -1,3 +1,4 @@
+import { apiURL } from "../lib/utils.js";
 export default class Quote {
   constructor(show) {
     this.show = show;
@@ -14,18 +15,15 @@ export default class Quote {
     button.setAttribute("class", "deleteButton");
     button.innerText = "Delete";
     button.addEventListener("click", function () {
-      fetch(
-        "https://efoksp21r7.execute-api.us-west-2.amazonaws.com/main/api/delete",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: quote.id,
-          }),
-        }
-      )
+      fetch(`${apiURL}/delete`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: quote.id,
+        }),
+      })
         .then((resp) => resp.json())
         .then((confirmation) => boundShowDeleteSuccess(confirmation.message));
     });
