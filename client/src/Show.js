@@ -1,5 +1,6 @@
+import { apiURL } from "../utils/index.js";
+
 import Quote from "./Quote.js";
-import { apiURL } from "../lib/utils.js";
 
 export default class Show {
   constructor(show) {
@@ -38,7 +39,6 @@ export default class Show {
     ul.setAttribute("class", "quoteList");
     ul.setAttribute("id", `quote-list-${show.id}`);
 
-    //create container div and append add button, show name, and list of quotes
     post.setAttribute("class", "post");
     post.setAttribute("id", show.id);
     post.append(addButton, name, ul);
@@ -47,7 +47,6 @@ export default class Show {
     return ul;
   }
 
-  //pass ul to each quote (it will append itself there) and build new quote for each
   buildQuotes(quotes) {
     quotes.forEach((quote) => {
       const newQuote = new Quote(this);
@@ -56,14 +55,12 @@ export default class Show {
   }
 
   showAddSuccess(confirmation) {
-    //flash success message
     const showMessage = document.getElementById("add-success");
     showMessage.innerText = confirmation.note;
     setTimeout(() => {
       showMessage.innerText = "";
     }, 1500);
 
-    //build new quote and add to DOM without page reload
     const showQuotes = document.getElementById(
       `quote-list-${confirmation.quote.show_id}`
     );
@@ -72,14 +69,12 @@ export default class Show {
   }
 
   showDeleteSuccess(confirmation) {
-    //flash success message
     const showMessage = document.getElementById("delete-success");
     showMessage.innerText = confirmation.note;
     setTimeout(() => {
       showMessage.innerText = "";
     }, 1500);
 
-    //remove quote from DOM without reloading page
     const showQuotes = document.getElementById(
       `quote-list-${confirmation.quote.show_id}`
     );

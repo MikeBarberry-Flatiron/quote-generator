@@ -1,4 +1,5 @@
-import { apiURL } from "../lib/utils.js";
+import { apiURL } from "../utils/index.js";
+
 export default class Quote {
   constructor(show) {
     this.show = show;
@@ -28,7 +29,6 @@ export default class Quote {
         .then((confirmation) => boundShowDeleteSuccess(confirmation.message));
     });
 
-    //append quote text and delete button on to ul received from Show class
     ele.append(button);
     ul.append(ele);
   }
