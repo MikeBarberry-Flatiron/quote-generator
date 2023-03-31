@@ -1,121 +1,120 @@
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
 body {
-    background-color: antiquewhite;
-    font-family: Arial, Helvetica, sans-serif;
+  background-color: antiquewhite;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h2 {
-    justify-self: center;
-}
-
-
-.darkMode {
-    background-color: rgb(48, 48, 48);
-    color: white; 
-}
-
-.load-message {
-	display: none;
-}
-
-.darkModePost {
-    display: inline-block;
-    margin-left: 1rem;
-    border: 2rem;
-    border-color: white;
-    box-shadow: 3px 4px 3px 4px white;
-    padding: 2rem;
-}
-
-#image-wrapper {
-    text-align: center;
-}
-
-#delete-success {
-    color: lightcoral;
-    font-weight: bolder;
-}
-
-#add-success {
-    color: mediumseagreen;
-    font-weight: bolder;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
-.addButton {
-    background-color: mediumseagreen;
-    border-radius: 5px;
-    font-family: 'Gloria Hallelujah', cursive;
-}
-
-.deleteButton {
-    background-color: lightcoral;
-    margin-left: 1rem;
-    border-radius: 5px;
-    float: right;
-    font-family: 'Gloria Hallelujah', cursive;
-}
-
-.post {
-    display: inline-grid;
-    margin: 1rem;
-    border: 2rem;
-    border-color: black;
-    box-shadow: 3px 4px 3px 4px black;
-    padding: 2rem;
-    max-width: 25rem;
-    font-family: 'Gloria Hallelujah', cursive;
+  justify-self: center;
 }
 
 li[button] {
-    position: relative;
-    float: right;
+  position: relative;
+  float: right;
 }
 
-#toogle-dark-mode {
-    border-radius: 10px;
-    background-color: rgb(48, 48, 48);
-    color: white;
-    position: relative;
-    right: 5rem;
-}
-
-#post-container {
-    display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 50%;
-}
-
-@keyframes blink {
-    0% {
-      opacity: .2;
-    }
-    
-    20% {
-      opacity: 1;
-    }
-   
-    100% {
-      opacity: .2;
-    }
+button:hover {
+  cursor: pointer;
 }
 
 #loading span {
-    animation-name: blink;
-    animation-duration: 1.4s;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
 }
 
 #loading span:nth-child(2) {
-    animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 #loading span:nth-child(3) {
-    animation-delay: .4s;
+  animation-delay: 0.4s;
+}
+
+.darkMode {
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+.load-message {
+  display: none;
+}
+
+.darkModePost {
+  display: inline-block;
+  margin-left: 1rem;
+  border: 2rem;
+  border-color: white;
+  box-shadow: 3px 4px 3px 4px white;
+  padding: 2rem;
+}
+
+#image-wrapper {
+  text-align: center;
+}
+
+#delete-success {
+  color: lightcoral;
+  font-weight: bolder;
+}
+
+#add-success {
+  color: mediumseagreen;
+  font-weight: bolder;
+}
+
+.addButton {
+  background-color: mediumseagreen;
+  border-radius: 5px;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.deleteButton {
+  background-color: lightcoral;
+  margin-left: 1rem;
+  border-radius: 5px;
+  float: right;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.post {
+  display: inline-grid;
+  margin: 1rem;
+  border: 2rem;
+  border-color: black;
+  box-shadow: 3px 4px 3px 4px black;
+  padding: 2rem;
+  max-width: 25rem;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+#toogle-dark-mode {
+  border-radius: 10px;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  position: relative;
+  right: 5rem;
+}
+
+#post-container {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
 }

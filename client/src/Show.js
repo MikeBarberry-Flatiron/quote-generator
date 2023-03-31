@@ -1,63 +1,84 @@
-import Quote from './Quote.js'
+import { apiURL } from "../utils/index.js";
+
+import Quote from "./Quote.js";
 
 export default class Show {
-    createShow(self, show) {
-        const container = document.getElementById('post-container');
+  constructor(show) {
+    this.quoteList = this.createShow(show);
+  }
 
-        const addButton = document.createElement('button');
-        addButton.innerText = "Add";
-        addButton.setAttribute('class', 'addButton');
-        addButton.addEventListener("click", function() {
-            fetch("https://nameless-gorge-25083.herokuapp.com/add", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    id: show.id 
-                })
-            })
-            .then(resp => resp.json())
-            .then(confirmation => self.showAddSuccess(confirmation.message))
+  createShow(show) {
+    const boundShowAddSuccess = this.showAddSuccess.bind(this);
+
+    const container = document.getElementById("post-container");
+    const addButton = document.createElement("button");
+    const name = document.createElement("h2");
+    const ul = document.createElement("ul");
+    const post = document.createElement("div");
+
+    addButton.innerText = "Add";
+    addButton.setAttribute("class", "addButton");
+    addButton.addEventListener("click", function () {
+      fetch(`${apiURL}/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: show.id,
+        }),
+      })
+        .then((resp) => resp.json())
+        .then((confirmation) => {
+          boundShowAddSuccess(confirmation.message);
         });
+    });
 
-        const name = document.createElement('h2');
-        name.innerText = show.name;
+    name.innerText = show.name;
 
-        const ul = document.createElement('ul');
-        ul.setAttribute('class', 'quoteList');
-        ul.setAttribute('id', `quote-list-${show.id}`);
+    ul.setAttribute("class", "quoteList");
+    ul.setAttribute("id", `quote-list-${show.id}`);
 
-        //create container div and append add button, show name, and list of quotes
-        const post = document.createElement('div');
-        post.setAttribute('class', 'post');
-        post.setAttribute('id', show.id);
-        post.append(addButton, name, ul);
-        container.append(post);
+    post.setAttribute("class", "post");
+    post.setAttribute("id", show.id);
+    post.append(addButton, name, ul);
+    container.append(post);
 
-        return ul
-    }
+    return ul;
+  }
 
-    //pass ul to each quote (it will append itself there) and build new quote for each
-    buildQuotes(quotes, ul) {
-        quotes.forEach(quote => {
-            const q = new Quote
-            q.createQuote(q, quote, ul)
-        })
-    }
+  buildQuotes(quotes) {
+    quotes.forEach((quote) => {
+      const newQuote = new Quote(this);
+      newQuote.createQuote(quote, this.quoteList);
+    });
+  }
 
-    showAddSuccess(confirmation) {
-        //flash success message
-        const showMessage = document.getElementById('add-success');
-        showMessage.innerText = confirmation.note;
-        setTimeout(() => {
-           showMessage.innerText = ""
-        }, 1500);
+  showAddSuccess(confirmation) {
+    const showMessage = document.getElementById("add-success");
+    showMessage.innerText = confirmation.note;
+    setTimeout(() => {
+      showMessage.innerText = "";
+    }, 1500);
 
-        //build new quote and add to DOM without page reload
-        const showQuotes =  document.getElementById(`quote-list-${confirmation.quote.show_id}`);
+    const showQuotes = document.getElementById(
+      `quote-list-${confirmation.quote.show_id}`
+    );
+    const newQuote = new Quote(this);
+    newQuote.createQuote(confirmation.quote, showQuotes);
+  }
 
-        const q = new Quote()
-        q.createQuote(q, confirmation.quote, showQuotes)
-    }
+  showDeleteSuccess(confirmation) {
+    const showMessage = document.getElementById("delete-success");
+    showMessage.innerText = confirmation.note;
+    setTimeout(() => {
+      showMessage.innerText = "";
+    }, 1500);
+
+    const showQuotes = document.getElementById(
+      `quote-list-${confirmation.quote.show_id}`
+    );
+    const quote = document.getElementById(confirmation.quote.id);
+    showQuotes.removeChild(quote);
+  }
 }

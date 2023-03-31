@@ -1,0 +1,20 @@
+{
+  "name": "quote-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Built with object oriented JavaScript and NodeJS Lambda functions.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeBarberry/quote-generator.git"
+  },
+  "keywords": [],
+  "author": "Mike Barberry",
+  "license": "ISC",
+  "homepage": "https://github.com/MikeBarberry/quote-generator#readme",
+  "dependencies": {
+    "eslint": "^8.32.0"
+  }
+}

@@ -1,2 +1,3 @@
-# Quote Generator 
-Built with object oriented JavaScript and Ruby on Rails as an API.
+# Quote Generator
+
+Built with object-oriented JavaScript and NodeJS AWS Lambda functions.
